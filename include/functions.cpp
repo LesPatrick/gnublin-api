@@ -1,3 +1,4 @@
+#include "functions.h"
 //Converting string to number
 int stringToNumber(std::string str){
 	std::stringstream  strin;

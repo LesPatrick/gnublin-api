@@ -36,7 +36,6 @@
 #include <fcntl.h>
 #include <fstream>
 #include <iostream>
-#include <linux/i2c.h>
 #include <linux/i2c-dev.h>
 #include <linux/spi/spidev.h>
 #include <sstream>
