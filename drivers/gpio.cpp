@@ -29,7 +29,7 @@ int gnublin_gpio::unexport(int pin){
 	std::string pin_str = numberToString(pin);
 	std::string dir = "/sys/class/gpio/unexport";
 	std::ofstream file (dir.c_str());
-	if (file < 0) {
+	if (!file.is_open()) {
 		error_flag = true;
 		return -1;
 	}
@@ -102,7 +102,7 @@ int gnublin_gpio::pinMode(int pin, std::string direction){
 	std::string pin_str = numberToString(pin);
 	std::string dir = "/sys/class/gpio/export";
 	std::ofstream file (dir.c_str());
-	if (file < 0) {
+	if (!file.is_open()) {
 		error_flag = true;
 		return -1;
 	}
@@ -112,7 +112,7 @@ int gnublin_gpio::pinMode(int pin, std::string direction){
 	dir = "/sys/class/gpio/gpio" + pin_str + "/direction";
 
 	file.open(dir.c_str());
-	if (file < 0) {
+	if (!file.is_open()) {
 		error_flag = true;
 		return -1;
 	}
@@ -155,7 +155,7 @@ int gnublin_gpio::digitalWrite(int pin, int value){
 	std::string dir = "/sys/class/gpio/gpio" + pin_str + "/value";
 
 	std::ofstream file (dir.c_str());
-	if (file < 0) {
+	if (!file.is_open()) {
 		error_flag = true;
 		return -1;
 	}
@@ -185,7 +185,7 @@ int gnublin_gpio::digitalRead(int pin) {
 	std::string pin_str = numberToString(pin);
 	std::string device = "/sys/class/gpio/gpio" + pin_str + "/value";
 	std::ifstream file(device.c_str());
-	if (file < 0){
+	if (!file.is_open()){
 		error_flag = true;
 		return -1;
 	}

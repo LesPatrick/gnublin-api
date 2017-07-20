@@ -88,7 +88,7 @@ int gnublin_adc::getValue(int pin){
 	std::string pin_str = numberToString(pin);
 	std::string device = "/dev/lpc313x_adc";
 	std::ofstream file(device.c_str());
-	if (file < 0) {
+	if (!file.is_open()) {
 		error_flag = true;
 		return -1;
 	}
